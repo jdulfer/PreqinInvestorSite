@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -46,12 +47,60 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.commitments-header {
+  margin-bottom: 1rem;
+}
+
+.commitments-button {
+  margin-left: 8px;
+  font-weight: normal;
+}
+
+.commitments-button.active {
+  font-weight: bold;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 80%;
+  table-layout: fixed;
+  background-color: #2e2e2e;
+  color: #ffffff;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.5rem;
+  background-color: #3a3a3a;
+  border-bottom: 2px solid #555555;
+  color: #ffffff;
+}
+
+tbody td {
+  padding: 0.5rem;
+  border: 1px solid #444444;
+  text-align: left;
+  word-wrap: break-word;
+  color: #ffffff;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #2a2a2a;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #242424;
 }
 
 @media (prefers-color-scheme: light) {
@@ -59,9 +108,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

@@ -7,13 +7,18 @@ import CommitmentList from "./components/CommitmentList.tsx";
 function App() {
     return (
         <div className="App">
+            <div style={{ position: 'absolute', top: 16, left: 16 }}>
+                <a href="/" style={{ textDecoration: 'none' }}>
+                    <button>Home</button>
+                </a>
+            </div>
             <Router>
                 <Routes>
                     <Route path="/" element={<InvestorList />} />
                     <Route path="/investors/:investorId/commitments" element={<CommitmentList />} />
                 </Routes>
-            </Router>
-        </div>
+            </Router >
+        </div >
     )
 }
 

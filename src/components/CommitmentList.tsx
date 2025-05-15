@@ -11,6 +11,7 @@ const CommitmentList: React.FC = () => {
     const [commitments, setCommitments] = useState<Commitment[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [selectedAssetClass, setSelectedAssetClass] = useState<string | null>(null);
     const { investorId } = useParams<CommitmentParams>();
 
     useEffect(() => {
@@ -33,9 +34,34 @@ const CommitmentList: React.FC = () => {
     }
     if (error) return <p>{error} </p>;
 
+    // Get distinct asset classes
+    const assetClasses = Array.from(new Set(commitments.map(c => c.assetClass)));
+
+    // Filter commitments by selected asset class
+    const filteredCommitments = selectedAssetClass
+        ? commitments.filter(c => c.assetClass === selectedAssetClass)
+        : commitments;
+
     return (
         <div>
             <h1>Commitments List</h1>
+            <div className="commitments-header">
+                <button
+                    onClick={() => setSelectedAssetClass(null)}
+                    className={`commitments-button ${selectedAssetClass === null ? "active" : ""}`}
+                >
+                    All
+                </button>
+                {assetClasses.map(assetClass => (
+                    <button
+                        key={assetClass}
+                        onClick={() => setSelectedAssetClass(assetClass)}
+                        className={`commitments-button ${selectedAssetClass === assetClass ? "active" : ""}`}
+                    >
+                        {assetClass}
+                    </button>
+                ))}
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -46,7 +72,7 @@ const CommitmentList: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {commitments.map((commitment) => (
+                    {filteredCommitments.map((commitment) => (
                         <tr key={commitment.id}>
                             <td>{commitment.id}</td>
                             <td>{commitment.assetClass}</td>

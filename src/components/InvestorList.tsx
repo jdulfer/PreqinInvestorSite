@@ -1,7 +1,7 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 import type { Investor } from "../domain/Investor";
-import { fetchInvestors } from "../api/InvestorAPI";
+import { fetchInvestors } from "../api/investorAPI";
 
 const InvestorList: React.FC = () => {
     const [investors, setInvestors] = useState<Investor[]>([]);
@@ -23,10 +23,12 @@ const InvestorList: React.FC = () => {
         getInvestors();
     }, []);
 
+    console.log(investors);
+
     if (loading) {
         return <p>Loading...</p>;
     }
-    if (error) return <p>{ error } </p>;
+    if (error) return <p>{error} </p>;
 
     return (
         <div>
@@ -39,6 +41,7 @@ const InvestorList: React.FC = () => {
                         <th>Type</th>
                         <th>Date Added</th>
                         <th>Last Updated</th>
+                        <th>Commitment Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +52,11 @@ const InvestorList: React.FC = () => {
                             <td>{investor.investoryType}</td>
                             <td>{investor.dateAdded}</td>
                             <td>{investor.lastUpdated}</td>
+                            <td>
+                                <a href={`/investors/${investor.id}/commitments`}>
+                                    {investor.commitmentTotal}
+                                </a>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

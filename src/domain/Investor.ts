@@ -4,4 +4,5 @@ export interface Investor {
     investoryType: string;
     dateAdded: String,
     lastUpdated: String,
+    commitmentTotal: number
 }

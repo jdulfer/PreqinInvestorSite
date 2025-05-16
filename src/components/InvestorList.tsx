@@ -23,8 +23,6 @@ const InvestorList: React.FC = () => {
         getInvestors();
     }, []);
 
-    console.log(investors);
-
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -54,7 +52,11 @@ const InvestorList: React.FC = () => {
                             <td>{investor.lastUpdated}</td>
                             <td>
                                 <a href={`/investors/${investor.id}/commitments`}>
-                                    {investor.commitmentTotal}
+                                    {Number(investor.commitmentTotal).toLocaleString('en-US', {
+                                        notation: "compact",
+                                        maximumFractionDigits: 1,
+                                        minimumFractionDigits: 1
+                                    })}
                                 </a>
                             </td>
                         </tr>

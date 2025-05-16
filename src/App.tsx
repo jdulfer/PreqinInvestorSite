@@ -3,12 +3,11 @@ import InvestorList from './components/InvestorList.tsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CommitmentList from "./components/CommitmentList.tsx";
 
-
 function App() {
     return (
         <div className="App">
-            <div style={{ position: 'absolute', top: 16, left: 16 }}>
-                <a href="/" style={{ textDecoration: 'none' }}>
+            <div className="home-button">
+                <a href="/">
                     <button>Home</button>
                 </a>
             </div>

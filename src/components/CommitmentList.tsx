@@ -34,10 +34,8 @@ const CommitmentList: React.FC = () => {
     }
     if (error) return <p>{error} </p>;
 
-    // Get distinct asset classes
     const assetClasses = Array.from(new Set(commitments.map(c => c.assetClass)));
 
-    // Filter commitments by selected asset class
     const filteredCommitments = selectedAssetClass
         ? commitments.filter(c => c.assetClass === selectedAssetClass)
         : commitments;
@@ -77,7 +75,13 @@ const CommitmentList: React.FC = () => {
                             <td>{commitment.id}</td>
                             <td>{commitment.assetClass}</td>
                             <td>{commitment.currency}</td>
-                            <td>{commitment.amount}</td>
+                            <td>
+                                {Number(commitment.amount).toLocaleString('en-US', {
+                                    notation: "compact",
+                                    maximumFractionDigits: 1,
+                                    minimumFractionDigits: 1
+                                })}
+                            </td>
                         </tr>
                     ))}
                 </tbody>

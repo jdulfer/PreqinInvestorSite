@@ -70,6 +70,12 @@ button:focus-visible {
   font-weight: bold;
 }
 
+.home-button {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
 table {
   margin: 0 auto;
   border-collapse: collapse;
